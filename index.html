@@ -3,114 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jane Doe — Portfolio</title>
+    <title>Name — Digital Designer</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <nav class="sidebar">
-        <div class="profile-header">
-            <a href="#" class="profile-name">Jane Doe</a>
-            <span class="profile-role">Full Stack Engineer</span>
-        </div>
-
-        <div class="nav-category">Intro</div>
-        <ul class="nav-list">
-            <li><a href="#about" class="nav-link active">About Me</a></li>
-            <li><a href="#philosophy" class="nav-link">Philosophy</a></li>
+    <nav class="navbar">
+        <div class="logo">Name.</div>
+        <ul class="nav-links">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Say Halló</a></li>
         </ul>
-
-        <div class="nav-category">Work</div>
-        <ul class="nav-list">
-            <li><a href="#projects" class="nav-link">Selected Projects</a></li>
-            <li><a href="#experience" class="nav-link">Experience</a></li>
-            <li><a href="#skills" class="nav-link">Technical Skills</a></li>
-        </ul>
-
-        <div class="nav-category">Links</div>
-        <ul class="nav-list">
-            <li><a href="https://github.com" target="_blank">GitHub</a></li>
-            <li><a href="https://twitter.com" target="_blank">Twitter / X</a></li>
-            <li><a href="mailto:hello@example.com">Email</a></li>
-        </ul>
+        <button id="theme-toggle" aria-label="Toggle Dark Mode">
+            <svg class="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+            <svg class="moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display:none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
     </nav>
 
-    <main class="content">
-        
-        <section id="about" class="section">
-            <h1>Human-first software engineer.</h1>
-            <p class="lead">
-                Welcome to my portfolio. Just like a good CLI, I believe software should be robust, composable, and respect the user's intelligence.
+    <header class="hero">
+        <div class="hero-content">
+            <h1>
+                Experience is <br>
+                <span class="highlight">everything.</span>
+            </h1>
+            <p class="hero-sub">
+                I create user-friendly solutions guided by accessibility, performance, and a bit of Nordic cool.
             </p>
-            <p>
-                I am a developer based in San Francisco, specializing in building scalable backend systems and minimal frontend interfaces. Currently building tools at <a href="#">Tech Corp</a>.
-            </p>
-        </section>
+        </div>
+    </header>
 
-        <section id="philosophy" class="section">
-            <h2>Philosophy</h2>
-            <p>These are the principles that guide my work, inspired by UNIX philosophy and modern UX practices.</p>
+    <div class="location-bar">
+        <div class="location-item">
+            <span class="time" id="time-local">00:00:00</span>
+            <span class="city">Local</span>
+            <span class="desc">Where you are.</span>
+        </div>
+        <div class="location-item">
+            <span class="time" id="time-ny">00:00:00</span>
+            <span class="city">New York</span>
+            <span class="desc">Where I work.</span>
+        </div>
+        <div class="location-item">
+            <span class="time" id="time-reykjavik">00:00:00</span>
+            <span class="city">Reykjavík</span>
+            <span class="desc">Dreaming of glaciers.</span>
+        </div>
+    </div>
+
+    <section id="work" class="work-section">
+        <div class="section-header">
+            <h2>Selected Work</h2>
+            <p>Recent projects & experiments.</p>
+        </div>
+
+        <div class="bento-grid">
+            <a href="#" class="grid-item large" style="background-color: #f4f4f4;">
+                <div class="project-info">
+                    <h3>Fintech Dashboard</h3>
+                    <span>UI / UX Design</span>
+                </div>
+                <div class="project-visual">
+                    <div class="mockup-box"></div>
+                </div>
+            </a>
+
+            <a href="#" class="grid-item medium" style="background-color: #E0F7FA;">
+                <div class="project-info">
+                    <h3>Eco-Travel App</h3>
+                    <span>Mobile App</span>
+                </div>
+                <div class="project-visual">
+                    <div class="circle-mockup"></div>
+                </div>
+            </a>
+
+            <a href="#" class="grid-item small accent-bg">
+                <div class="project-info">
+                    <h3>Design System</h3>
+                    <span>Documentation</span>
+                </div>
+                <div class="arrow-icon">→</div>
+            </a>
             
-            <h3>Simplicity</h3>
-            <p>Complexity is the enemy of reliability. I strive to write code that is easy to read, easy to delete, and does one thing well.</p>
+             <a href="#" class="grid-item medium" style="background-color: #F3E5F5;">
+                <div class="project-info">
+                    <h3>Brand Refresh</h3>
+                    <span>Identity</span>
+                </div>
+                <div class="project-visual">
+                    <div class="square-mockup"></div>
+                </div>
+            </a>
+        </div>
+    </section>
 
-            <h3>Robustness</h3>
-            <p>Systems should fail gracefully. Whether it's handling API errors or user input, I design for the "happy path" but engineer for the edge cases.</p>
-        </section>
-
-        <section id="projects" class="section">
-            <h2>Selected Projects</h2>
-
-            <div class="project-item">
-                <h3>cli-analyser</h3>
-                <span class="project-meta">--language=rust --stars=1.2k --status=maintained</span>
+    <section id="about" class="about-section">
+        <div class="about-grid">
+            <div class="about-text">
+                <h2>Who I am</h2>
                 <p>
-                    A high-performance command line tool for analyzing log files. It parses raw text logs 10x faster than standard regex tools by using zero-copy deserialization.
+                    I'm a digital designer obsessed with making the web feel organic. Just like Jökulá, I believe in "Sunshine and mountain vibes."
                 </p>
-                <pre><code>$ cargo install cli-analyser
-$ log-check --file access.log --json</code></pre>
-                <p><a href="#">View Source</a> &middot; <a href="#">Read Case Study</a></p>
-            </div>
-
-            <div class="project-item">
-                <h3>border-radius-preview</h3>
-                <span class="project-meta">--stack=react --type=frontend --demo=live</span>
                 <p>
-                    A minimal GUI for generating complex CSS border-radius shapes. Built to help designers visualize organic shapes for web interfaces.
+                    Currently available for freelance work.
                 </p>
-                <p><a href="#">Visit Site</a> &middot; <a href="#">View Source</a></p>
             </div>
-        </section>
+            <div class="about-stats">
+                <div class="stat">
+                    <span class="number">5+</span>
+                    <span class="label">Years Experience</span>
+                </div>
+                <div class="stat">
+                    <span class="number">30+</span>
+                    <span class="label">Projects Shipped</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <section id="experience" class="section">
-            <h2>Experience</h2>
-            <ul>
-                <li>
-                    <strong>Senior Engineer @ Google</strong> <span class="muted-mono">(2021—Present)</span><br>
-                    Working on internal developer tools and cloud infrastructure.
-                </li>
-                <li>
-                    <strong>Software Developer @ StartupInc</strong> <span class="muted-mono">(2018—2021)</span><br>
-                    Led the migration from a monolith to microservices. Reduced deployment time by 40%.
-                </li>
-            </ul>
-        </section>
-        
-        <section id="skills" class="section">
-            <h2>Technical Skills</h2>
-            <p><strong>Languages:</strong> Python, JavaScript (ES6+), Rust, Go, SQL</p>
-            <p><strong>Tools:</strong> Docker, Kubernetes, AWS, Linux, Git</p>
-        </section>
-
-        <section id="contact" class="footer">
-            <p>
-                <strong>Let's connect.</strong> <br>
-                I am currently open to freelance opportunities. <br>
-                <a href="mailto:email@example.com">email@example.com</a>
-            </p>
-        </section>
-
-    </main>
+    <footer id="contact">
+        <div class="footer-content">
+            <h2 class="footer-cta">Say Halló!</h2>
+            <a href="mailto:hello@example.com" class="email-link">hello@example.com</a>
+            
+            <div class="footer-links">
+                <a href="#">LinkedIn</a>
+                <a href="#">Dribbble</a>
+                <a href="#">Instagram</a>
+            </div>
+            
+            <p class="copyright">© 2025 Name. Inspired by Jökulá.</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
