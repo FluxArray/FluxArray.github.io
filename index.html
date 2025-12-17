@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jane Doe — Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="sidebar">
+        <div class="profile-header">
+            <a href="#" class="profile-name">Jane Doe</a>
+            <span class="profile-role">Full Stack Engineer</span>
+        </div>
+
+        <div class="nav-category">Intro</div>
+        <ul class="nav-list">
+            <li><a href="#about" class="nav-link active">About Me</a></li>
+            <li><a href="#philosophy" class="nav-link">Philosophy</a></li>
+        </ul>
+
+        <div class="nav-category">Work</div>
+        <ul class="nav-list">
+            <li><a href="#projects" class="nav-link">Selected Projects</a></li>
+            <li><a href="#experience" class="nav-link">Experience</a></li>
+            <li><a href="#skills" class="nav-link">Technical Skills</a></li>
+        </ul>
+
+        <div class="nav-category">Links</div>
+        <ul class="nav-list">
+            <li><a href="https://github.com" target="_blank">GitHub</a></li>
+            <li><a href="https://twitter.com" target="_blank">Twitter / X</a></li>
+            <li><a href="mailto:hello@example.com">Email</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        
+        <section id="about" class="section">
+            <h1>Human-first software engineer.</h1>
+            <p class="lead">
+                Welcome to my portfolio. Just like a good CLI, I believe software should be robust, composable, and respect the user's intelligence.
+            </p>
+            <p>
+                I am a developer based in San Francisco, specializing in building scalable backend systems and minimal frontend interfaces. Currently building tools at <a href="#">Tech Corp</a>.
+            </p>
+        </section>
+
+        <section id="philosophy" class="section">
+            <h2>Philosophy</h2>
+            <p>These are the principles that guide my work, inspired by UNIX philosophy and modern UX practices.</p>
+            
+            <h3>Simplicity</h3>
+            <p>Complexity is the enemy of reliability. I strive to write code that is easy to read, easy to delete, and does one thing well.</p>
+
+            <h3>Robustness</h3>
+            <p>Systems should fail gracefully. Whether it's handling API errors or user input, I design for the "happy path" but engineer for the edge cases.</p>
+        </section>
+
+        <section id="projects" class="section">
+            <h2>Selected Projects</h2>
+
+            <div class="project-item">
+                <h3>cli-analyser</h3>
+                <span class="project-meta">--language=rust --stars=1.2k --status=maintained</span>
+                <p>
+                    A high-performance command line tool for analyzing log files. It parses raw text logs 10x faster than standard regex tools by using zero-copy deserialization.
+                </p>
+                <pre><code>$ cargo install cli-analyser
+$ log-check --file access.log --json</code></pre>
+                <p><a href="#">View Source</a> &middot; <a href="#">Read Case Study</a></p>
+            </div>
+
+            <div class="project-item">
+                <h3>border-radius-preview</h3>
+                <span class="project-meta">--stack=react --type=frontend --demo=live</span>
+                <p>
+                    A minimal GUI for generating complex CSS border-radius shapes. Built to help designers visualize organic shapes for web interfaces.
+                </p>
+                <p><a href="#">Visit Site</a> &middot; <a href="#">View Source</a></p>
+            </div>
+        </section>
+
+        <section id="experience" class="section">
+            <h2>Experience</h2>
+            <ul>
+                <li>
+                    <strong>Senior Engineer @ Google</strong> <span class="muted-mono">(2021—Present)</span><br>
+                    Working on internal developer tools and cloud infrastructure.
+                </li>
+                <li>
+                    <strong>Software Developer @ StartupInc</strong> <span class="muted-mono">(2018—2021)</span><br>
+                    Led the migration from a monolith to microservices. Reduced deployment time by 40%.
+                </li>
+            </ul>
+        </section>
+        
+        <section id="skills" class="section">
+            <h2>Technical Skills</h2>
+            <p><strong>Languages:</strong> Python, JavaScript (ES6+), Rust, Go, SQL</p>
+            <p><strong>Tools:</strong> Docker, Kubernetes, AWS, Linux, Git</p>
+        </section>
+
+        <section id="contact" class="footer">
+            <p>
+                <strong>Let's connect.</strong> <br>
+                I am currently open to freelance opportunities. <br>
+                <a href="mailto:email@example.com">email@example.com</a>
+            </p>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
