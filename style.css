@@ -1,3 +1,15 @@
+/* --- LOAD CUSTOM FONT --- */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+@font-face {
+    font-family: 'Soria';
+    src: url('Soria.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* --- CSS VARIABLES & RESET --- */
 :root {
     /* Light Theme (Default) */
@@ -6,17 +18,18 @@
     --muted-color: #666666;
     --accent-color: #000000;
     --code-bg: #f5f5f5;
-    --border-color: #eaeaea;
     --sidebar-width: 280px;
-    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    --font-body: "JetBrains Mono", monospace;
+    --font-mono: "Soria", serif;
+    --cursor-color: #2CFF05; /* Your accent green */
 }
+
 
 @media (prefers-color-scheme: dark) {
     :root {
         /* Dark Theme Auto-Switch */
         --bg-color: #000000;
-        --text-color: #e0e0e0;
+        --text-color: #E6E6E6;
         --muted-color: #a0a0a0;
         --accent-color: #ffffff;
         --code-bg: #1f1f1f;
@@ -24,7 +37,12 @@
     }
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    cursor: none; /* Hides default cursor everywhere */
+}
 
 html { scroll-behavior: smooth; }
 
@@ -32,8 +50,9 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: var(--font-body);
-    line-height: 1.6;
     font-size: 18px;
+    font-weight: 1;
+    line-height: 1.6;
     display: flex;
     min-height: 100vh;
 }
@@ -41,16 +60,62 @@ body {
 a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
 a:hover { color: var(--muted-color); }
 
-/* --- LAYOUT --- */
+/* --- CUSTOM CURSOR STYLES --- */
+.cursor-dot,
+.cursor-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    margin-left: -4px; /* Centers the dot (half of width) */
+    margin-top: -4px;  /* Centers the dot (half of height) */
+    background-color: var(--cursor-color);
+    box-shadow: 0 0 10px var(--cursor-color);
+}
+
+.cursor-outline {
+    width: 20px;
+    height: 20px;
+    margin-left: -10px; /* Centers the circle (half of width) */
+    margin-top: -10px;  /* Centers the circle (half of height) */
+    border: 1px solid var(--cursor-color);
+    /* Note: No transition here anymore! JS handles the smoothness. */
+}
+
+/* Hover effect */
+body.hovering .cursor-outline {
+    background-color: rgba(44, 255, 5, 0.1);
+    border-color: transparent;
+    width: 40px;
+    height: 40px;
+    margin-left: -20px; /* Re-center for new size */
+    margin-top: -20px;
+}
+
+/* Hover effect for links */
+body.hovering .cursor-outline {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(44, 255, 5, 0.1); /* Slight tint when hovering */
+    border-color: transparent;
+}
+
+/* --- LAYOUT (Rest unchanged) --- */
 nav.sidebar {
     width: var(--sidebar-width);
     padding: 40px;
     position: fixed;
     height: 100vh;
     overflow-y: auto;
-    border-right: 1px solid var(--border-color);
     font-size: 0.9em;
-    background: var(--bg-color); /* Ensures content doesn't show through on mobile */
+    background: var(--bg-color);
     z-index: 10;
 }
 
@@ -62,10 +127,23 @@ main.content {
 }
 
 /* --- TYPOGRAPHY --- */
-h1, h2, h3 { font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; color: var(--accent-color); }
-h1 { font-size: 2.5rem; margin-bottom: 2rem; line-height: 1.2; }
-h2 { font-size: 1.75rem; margin-top: 3rem; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
-h3 { font-size: 1.25rem; margin-top: 2rem; font-family: var(--font-mono); }
+h1, h2, h3 { font-weight: 100; letter-spacing: -0.02em; margin-bottom: 1rem; color: var(--accent-color); }
+h1 { 
+    font-size: 2.5rem;
+    margin-bottom: 2rem; 
+    line-height: 1.2; 
+}
+h2 {
+    font-size: 1.5rem; 
+    margin-top: 3.5rem;  
+    color: #2CFF05;
+    font-family: "Press Start 2P", cursive;
+}
+h3 {
+    font-size: 1.5rem; 
+    margin-top: 2rem; 
+    font-family: "Silkscreen", monospace;
+}
 
 p { margin-bottom: 1.5rem; max-width: 65ch; }
 ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
@@ -73,31 +151,48 @@ li { margin-bottom: 0.5rem; }
 .lead { font-size: 1.1em; color: var(--muted-color); }
 
 /* --- COMPONENTS --- */
-
-/* Sidebar Profile */
 .profile-header { margin-bottom: 2rem; }
-.profile-name { text-decoration: none; font-weight: bold; font-size: 1.2rem; display: block; }
-.profile-role { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted-color); }
+.profile-name { 
+    font-weight: 500;
+    text-decoration: none; 
+    font-size: 1.7rem; 
+    display: block; 
+    color: #2CFF05;
+    font-family: "Press Start 2P", cursive;
+}
+.profile-role { 
+    letter-spacing: 2px;
+    font-family: var(--font-body); 
+    font-size: 1rem; color: 
+    #1f7307; 
+}
 
-/* Navigation Links */
 .nav-list { list-style: none; padding: 0; }
 .nav-list li { margin-bottom: 8px; }
-.nav-list a { text-decoration: none; color: var(--muted-color); display: block; transition: color 0.2s; }
-.nav-list a:hover { color: var(--text-color); }
-.nav-list a.active { color: var(--accent-color); font-weight: 600; padding-left: 5px; border-left: 2px solid var(--accent-color); margin-left: -7px; }
+.nav-list a {
+    text-decoration: none; color: var(--muted-color); display: block; transition: color 0.2s; font-family: var(--font-mono);
+    transform: scaleY(1.2);
+    transform-origin: top left;
+    margin-left: 1rem;
+    font-size: 1rem;
+}
+.nav-list a:hover { color: #1f7307; }
+.nav-list a.active { 
+    color: var(--accent-color); 
+    font-weight: 600; 
+    margin-left: -7px;
+    margin-left: 1rem; 
+}
 
 .nav-category {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 1.1rem;
     color: var(--muted-color);
     margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
+    transform: scaleY(1.2);
+    transform-origin: top left;
 }
 
-/* Code Blocks */
 pre, code { font-family: var(--font-mono); font-size: 0.9em; }
 code { background: var(--code-bg); padding: 2px 5px; border-radius: 4px; }
 pre {
@@ -109,17 +204,23 @@ pre {
     border: 1px solid var(--border-color);
 }
 
-/* Project Items */
 .project-item { margin-bottom: 3rem; }
 .project-meta { font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted-color); margin-bottom: 10px; display: block; }
 
-/* Helpers */
 .muted-mono { color: var(--muted-color); font-family: var(--font-mono); font-size: 0.9em; }
-.footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-color); }
+.footer { 
+    margin-top: 4rem; 
+    padding-top: 2rem; 
+    border-top: 1px solid var(--border-color); 
+}
+.regards {
+    color: #434343;
+}
 
-/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
-    body { flex-direction: column; }
+    body { flex-direction: column; cursor: auto; /* Show normal cursor on mobile */ }
+    /* Hide custom cursor on touch devices to prevent lag/bugs */
+    .cursor-dot, .cursor-outline { display: none; }
     
     nav.sidebar {
         position: relative;
@@ -129,11 +230,28 @@ pre {
         border-bottom: 1px solid var(--border-color);
         padding: 20px;
     }
-    
-    /* Hide lower nav items on mobile to save space, or keep them if preferred */
     .nav-category, .nav-list { display: none; } 
-    /* Only show Profile info on mobile header by default */
     .profile-header { margin-bottom: 0; }
-    
     main.content { margin-left: 0; padding: 40px 20px; }
+}
+
+/* --- SOCIAL ICONS --- */
+.social-row {
+    display: flex;
+    gap: 20px;          /* Space between icons */
+    padding-left: 0;    /* Aligns with the left edge of text */
+    margin-top: 1rem;
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--muted-color); /* Default color (Grey) */
+    transition: transform 0.2s ease, fill 0.2s ease;
+}
+
+/* Hover Effect: Turns Neon Green and slightly scales up */
+.social-row a:hover .social-icon {
+    fill: #2CFF05; 
+    transform: scale(1.1);
 }
